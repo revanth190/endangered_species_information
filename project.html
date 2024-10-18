@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endangered Species Information</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #2E7D32;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            background-color: #1B5E20;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: background 0.3s;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #43A047;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .highlighted-species, .news-section, .conservation-efforts, .contact-page, .about-page {
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .highlighted-species img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        h2, h3 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        footer {
+            background-color: #1B5E20;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .about-page {
+            padding: 20px;
+            background-color: #E8F5E9;
+            border-left: 5px solid #2E7D32;
+        }
+        .comment-section {
+            margin-top: 30px;
+        }
+        .comment-section input[type="email"], .comment-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .comment-section input[type="submit"] {
+            background-color: #2E7D32;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .comment-section input[type="submit"]:hover {
+            background-color: #43A047;
+        }
+        .know-more-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #43A047;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        .know-more-btn:hover {
+            background-color: #388E3C;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                padding: 10px;
+                margin: 5px 0;
+            }
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Endangered Species Information</h1>
+        <p>Protecting Our Planet's Precious Wildlife</p>
+    </header>
+
+    <nav>
+        <a href="#" id="home-link">Home</a>
+        <a href="#" id="species-list-link">Species List</a>
+        <a href="#" id="conservation-efforts-link">Conservation Efforts</a>
+        <a href="#" id="contact-link">Contact</a>
+    </nav>
+
+    <div id="content" class="container">
+        <!-- Initial home page content will be inserted by JavaScript -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Endangered Species Information. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let speciesData = [];
+        let newsData = [];
+
+        function displayHomePage() {
+            const contentDiv = document.getElementById('content');
+            const hardcodedSpecies = [
+                {
+                    scientificName: "Panthera tigris",
+                    commonName: "Tiger",
+                    status: "Endangered",
+                    habitat: "Tropical Rainforests, Grasslands, Mangrove Swamps",
+                    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcShejbljIEn1n2iFkKgJcj9qKyLUSDg4asvmw8KoVY84j-5cWEi"
+                },
+                {
+                    scientificName: "Gorilla beringei beringei",
+                    commonName: "Mountain Gorilla",
+                    status: "Critically Endangered",
+                    habitat: "Montane Rainforests, Bamboo Forests",
+                    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQpgLCpea6EfBfxigtLpCnkM0AUHQ7faYkQOTw8llQk4rELngvepgTETLmPW09MKGCPsImr2e03O_DxyBLhyzrku-mu6qeLC1HRiFmlic8"
+                },
+                {
+                    scientificName: "Loxodonta africana",
+                    commonName: "African Elephant",
+                    status: "Vulnerable",
+                    habitat: "Savannahs, Forests",
+                    imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQgjE3niDhOvxubVUDKgGjaZPqx6LntXcb4BP5-NdXJpvw0gQqz"
+                }
+            ];
+
+            contentDiv.innerHTML = `
+                <div class="news-section">
+                    <h2>Highlighted Endangered Species</h2>
+                    ${hardcodedSpecies.map(species => `
+                        <div class="species-item">
+                            <h3>${species.scientificName}</h3>
+                            <img src="${species.imageUrl}" alt="${species.scientificName}">
+                            <p><strong>Common Name:</strong> ${species.commonName || 'N/A'}</p>
+                            <p><strong>Status:</strong> ${species.status}</p>
+                            <p><strong>Habitat:</strong> ${species.habitat}</p>
+                            <a class="know-more-btn" href="https://www.google.com/search?q=${encodeURIComponent(species.scientificName)}" target="_blank">Know More</a>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="about-page">
+                    <h2>About Us</h2>
+                    <p>We are a dedicated organization focused on the conservation of endangered species and their habitats. Our mission is to raise awareness, provide resources, and support initiatives that protect wildlife.</p>
+                </div>
+            `;
+        }
+
+        function displaySpeciesList() {
+            const contentDiv = document.getElementById('content');
+            const detailedSpecies = [
+                {
+                    scientificName: "Panthera tigris",
+                    commonName: "Tiger",
+                    status: "Endangered",
+                    habitat: "Tropical Rainforests, Grasslands, Mangrove Swamps",
+                    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcShejbljIEn1n2iFkKgJcj9qKyLUSDg4asvmw8KoVY84j-5cWEi"
+                },
+                {
+                    scientificName: "Gorilla beringei beringei",
+                    commonName: "Mountain Gorilla",
+                    status: "Critically Endangered",
+                    habitat: "Montane Rainforests, Bamboo Forests",
+                    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQpgLCpea6EfBfxigtLpCnkM0AUHQ7faYkQOTw8llQk4rELngvepgTETLmPW09MKGCPsImr2e03O_DxyBLhyzrku-mu6qeLC1HRiFmlic8"
+                },
+                {
+                    scientificName: "Loxodonta africana",
+                    commonName: "African Elephant",
+                    status: "Vulnerable",
+                    habitat: "Savannahs, Forests",
+                    imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQgjE3niDhOvxubVUDKgGjaZPqx6LntXcb4BP5-NdXJpvw0gQqz"
+                }
+            ];
+
+            contentDiv.innerHTML = `
+                <h2>Species List</h2>
+                ${detailedSpecies.map(species => `
+                    <div class="highlighted-species">
+                        <h3>${species.scientificName}</h3>
+                        <img src="${species.imageUrl}" alt="${species.scientificName}">
+                        <p><strong>Common Name:</strong> ${species.commonName || 'N/A'}</p>
+                        <p><strong>Status:</strong> ${species.status}</p>
+                        <p><strong>Habitat:</strong> ${species.habitat}</p>
+                        <a class="know-more-btn" href="https://www.google.com/search?q=${encodeURIComponent(species.scientificName)}" target="_blank">Know More</a>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        function displayConservationEfforts() {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = `
+                <div class="conservation-efforts">
+                    <h2>Conservation Efforts</h2>
+                    <p>Many organizations are dedicated to preserving endangered species through various initiatives, such as habitat protection, breeding programs, and public education.</p>
+                    <h3>What You Can Do</h3>
+                    <p>We're all in this together! Here are some ways you can help:</p>
+                    <ul>
+                        <li>Join a local conservation group to connect with like-minded individuals.</li>
+                        <li>Participate in wildlife monitoring programs to help track species populations.</li>
+                        <li>Volunteer for restoration projects in your community to restore natural habitats.</li>
+                        <li>Donate to organizations working on species conservation to support their vital efforts.</li>
+                        <li>Spread the word! Share information about endangered species with friends and family to raise awareness.</li>
+                    </ul>
+                    <h3>Get Inspired</h3>
+                    <p>Every small action counts! From adopting sustainable practices at home to supporting eco-friendly businesses, you can contribute to protecting our planet’s biodiversity. Let's work together for a better future for all living creatures!</p>
+                </div>
+            `;
+        }
+
+        function displayContactPage() {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = `
+                <div class="contact-page">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or would like to learn more about our organization, please contact us:</p>
+                    <div class="comment-section">
+                        <h3>Leave a Comment</h3>
+                        <form id="comment-form">
+                            <input type="email" placeholder="Your email" required>
+                            <textarea rows="5" placeholder="Your comment" required></textarea>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('comment-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert("Thank you for your comment! We'll get back to you soon.");
+                document.getElementById('comment-form').reset();
+            });
+        }
+
+        document.getElementById('home-link').addEventListener('click', function() {
+            displayHomePage();
+        });
+
+        document.getElementById('species-list-link').addEventListener('click', function() {
+            displaySpeciesList();
+        });
+
+        document.getElementById('conservation-efforts-link').addEventListener('click', function() {
+            displayConservationEfforts();
+        });
+
+        document.getElementById('contact-link').addEventListener('click', function() {
+            displayContactPage();
+        });
+
+        // Load the home page by default
+        displayHomePage();
+    </script>
+</body>
+</html>
