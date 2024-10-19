@@ -12,6 +12,7 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
+            transition: background-color 0.3s ease;
         }
         header {
             background-color: #2E7D32;
@@ -19,6 +20,7 @@
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease-out;
         }
         nav {
             background-color: #1B5E20;
@@ -30,16 +32,20 @@
             color: white;
             padding: 15px 20px;
             text-decoration: none;
-            transition: background 0.3s;
+            transition: background 0.3s ease, transform 0.2s ease;
             border-radius: 5px;
         }
         nav a:hover {
             background-color: #43A047;
+            transform: scale(1.05);
         }
         .container {
             padding: 20px;
             max-width: 1200px;
             margin: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: fadeIn 1s forwards;
         }
         .highlighted-species, .news-section, .conservation-efforts, .contact-page, .about-page {
             margin: 20px 0;
@@ -47,11 +53,16 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
-        .highlighted-species img {
+        .highlighted-species:hover {
+            transform: scale(1.02);
+        }
+     img {
             width: 100%;
             height: auto;
             border-radius: 10px;
+            transition: opacity 0.6s ease;
         }
         h2, h3 {
             color: #2E7D32;
@@ -126,6 +137,16 @@
                 padding: 10px;
             }
         }
+         /* Keyframe Animations */
+         @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            0% { transform: translateY(-20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -162,21 +183,21 @@
                     commonName: "Tiger",
                     status: "Endangered",
                     habitat: "Tropical Rainforests, Grasslands, Mangrove Swamps",
-                    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcShejbljIEn1n2iFkKgJcj9qKyLUSDg4asvmw8KoVY84j-5cWEi"
+                    imageUrl: "tiger.jpg"
                 },
                 {
                     scientificName: "Gorilla beringei beringei",
                     commonName: "Mountain Gorilla",
                     status: "Critically Endangered",
                     habitat: "Montane Rainforests, Bamboo Forests",
-                    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQpgLCpea6EfBfxigtLpCnkM0AUHQ7faYkQOTw8llQk4rELngvepgTETLmPW09MKGCPsImr2e03O_DxyBLhyzrku-mu6qeLC1HRiFmlic8"
+                    imageUrl: "gorriela.webp"
                 },
                 {
                     scientificName: "Loxodonta africana",
                     commonName: "African Elephant",
                     status: "Vulnerable",
                     habitat: "Savannahs, Forests",
-                    imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQgjE3niDhOvxubVUDKgGjaZPqx6LntXcb4BP5-NdXJpvw0gQqz"
+                    imageUrl: "elephant.jpg"
                 }
             ];
 
@@ -194,37 +215,83 @@
                         </div>
                     `).join('')}
                 </div>
-                <div class="about-page">
-                    <h2>About Us</h2>
-                    <p>We are a dedicated organization focused on the conservation of endangered species and their habitats. Our mission is to raise awareness, provide resources, and support initiatives that protect wildlife.</p>
-                </div>
+               <div class="about-page">
+    <h2>About Us</h2>
+    <p>Endangered Species Information is a non-profit organization committed to the preservation and protection of the world's most vulnerable wildlife species. We believe that every species plays a critical role in maintaining the health of our planet's ecosystems. As climate change, habitat destruction, and illegal poaching threaten countless species, our mission is to raise awareness, provide educational resources, and actively engage in conservation initiatives.</p>
+    
+    <p>Our organization works in collaboration with leading global conservation groups such as the World Wildlife Fund (WWF), the International Union for Conservation of Nature (IUCN), and local grassroots initiatives. We aim to bridge the gap between scientific research and public involvement, making it easy for everyone to contribute to the preservation of endangered species.</p>
+    
+    <h3>Our Core Objectives</h3>
+    <ul>
+        <li><strong>Education:</strong> We strive to educate the public about endangered species, their habitats, and the ongoing challenges they face. By spreading knowledge, we empower individuals and communities to take action.</li>
+        <li><strong>Conservation:</strong> We actively participate in conservation programs, including habitat restoration, anti-poaching campaigns, and breeding initiatives for species on the brink of extinction.</li>
+        <li><strong>Advocacy:</strong> We advocate for stronger environmental policies, aiming to influence governments and organizations to implement sustainable practices and protect wildlife areas.</li>
+        <li><strong>Community Engagement:</strong> We believe in the power of community-driven conservation. Through workshops, campaigns, and volunteer programs, we enable people around the world to contribute to wildlife protection efforts.</li>
+    </ul>
+
+    <p>At Endangered Species Information, we are dedicated to ensuring that future generations inherit a planet rich in biodiversity. We believe that protecting endangered species is not only about preserving animals but also about maintaining the balance of life that sustains all of us.</p>
+    
+    <h3>How You Can Get Involved</h3>
+    <p>There are many ways to support our cause. You can:</p>
+    <ul>
+        <li>Donate to our conservation efforts to help fund habitat protection, wildlife research, and anti-poaching initiatives.</li>
+        <li>Volunteer with us or our partner organizations to work on local conservation projects.</li>
+        <li>Join our campaigns to raise awareness about endangered species and their importance to the ecosystem.</li>
+        <li>Stay informed by subscribing to our newsletter and following us on social media for the latest updates on endangered species and conservation news.</li>
+    </ul>
+
+    <p>Together, we can make a difference and help save endangered species from extinction. Join us in our mission to protect wildlife and preserve the natural beauty of our planet.</p>
+</div>
+
             `;
         }
 
         function displaySpeciesList() {
             const contentDiv = document.getElementById('content');
             const detailedSpecies = [
-                {
-                    scientificName: "Panthera tigris",
-                    commonName: "Tiger",
-                    status: "Endangered",
-                    habitat: "Tropical Rainforests, Grasslands, Mangrove Swamps",
-                    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcShejbljIEn1n2iFkKgJcj9qKyLUSDg4asvmw8KoVY84j-5cWEi"
-                },
-                {
-                    scientificName: "Gorilla beringei beringei",
-                    commonName: "Mountain Gorilla",
-                    status: "Critically Endangered",
-                    habitat: "Montane Rainforests, Bamboo Forests",
-                    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQpgLCpea6EfBfxigtLpCnkM0AUHQ7faYkQOTw8llQk4rELngvepgTETLmPW09MKGCPsImr2e03O_DxyBLhyzrku-mu6qeLC1HRiFmlic8"
+            {
+                    scientificName: "Ailuropoda melanoleuca",
+                    commonName: "Giant Panda",
+                    status: "Vulnerable",
+                    habitat: "Temperate Broadleaf and Mixed Forests",
+                    imageUrl: "panda.jpg"
                 },
                 {
                     scientificName: "Loxodonta africana",
                     commonName: "African Elephant",
                     status: "Vulnerable",
                     habitat: "Savannahs, Forests",
-                    imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQgjE3niDhOvxubVUDKgGjaZPqx6LntXcb4BP5-NdXJpvw0gQqz"
+                    imageUrl: "elephant.jpg"
+                },
+            {
+                    scientificName: "Panthera tigris",
+                    commonName: "Tiger",
+                    status: "Endangered",
+                    habitat: "Tropical Rainforests, Grasslands, Mangrove Swamps",
+                    imageUrl: "tiger.jpg"
+                },
+                {
+                    scientificName: "Gorilla beringei beringei",
+                    commonName: "Mountain Gorilla",
+                    status: "Critically Endangered",
+                    habitat: "Montane Rainforests, Bamboo Forests",
+                    imageUrl: "gorriela.webp"
+                },
+               {
+                    scientificName: "Pongo abelii",
+                    commonName: "Sumatran Orangutan",
+                    status: "Critically Endangered",
+                    habitat: "Tropical Rainforests",
+                    imageUrl: "pongo.jpg"
+                },
+                {
+                    scientificName: "Rhinoceros sondaicus",
+                    commonName: "Javan Rhino",
+                    status: "Critically Endangered",
+                    habitat: "Tropical Rainforests",
+                    imageUrl: "rhino.jpg"
                 }
+               
             ];
 
             contentDiv.innerHTML = `
@@ -246,20 +313,62 @@
             const contentDiv = document.getElementById('content');
             contentDiv.innerHTML = `
                 <div class="conservation-efforts">
-                    <h2>Conservation Efforts</h2>
-                    <p>Many organizations are dedicated to preserving endangered species through various initiatives, such as habitat protection, breeding programs, and public education.</p>
-                    <h3>What You Can Do</h3>
-                    <p>We're all in this together! Here are some ways you can help:</p>
-                    <ul>
-                        <li>Join a local conservation group to connect with like-minded individuals.</li>
-                        <li>Participate in wildlife monitoring programs to help track species populations.</li>
-                        <li>Volunteer for restoration projects in your community to restore natural habitats.</li>
-                        <li>Donate to organizations working on species conservation to support their vital efforts.</li>
-                        <li>Spread the word! Share information about endangered species with friends and family to raise awareness.</li>
-                    </ul>
-                    <h3>Get Inspired</h3>
-                    <p>Every small action counts! From adopting sustainable practices at home to supporting eco-friendly businesses, you can contribute to protecting our planet’s biodiversity. Let's work together for a better future for all living creatures!</p>
-                </div>
+    <h2>Conservation Efforts</h2>
+    <p>Many organizations are dedicated to preserving endangered species through various initiatives, such as habitat protection, breeding programs, and public education. These efforts are critical to prevent extinction and restore ecosystems.</p>
+
+    <h3>Organizations Leading the Way</h3>
+    <p>Here are some global organizations actively working on wildlife conservation:</p>
+    <ul>
+        <li>
+            <strong>World Wildlife Fund (WWF)</strong> – One of the most recognized organizations, WWF focuses on preserving nature and reducing the most pressing threats to the diversity of life on Earth. Visit <a href="https://www.worldwildlife.org/">WWF</a> to learn more and get involved.
+        </li>
+        <li>
+            <strong>International Union for Conservation of Nature (IUCN)</strong> – The IUCN works on nature conservation and sustainable use of natural resources. They maintain the Red List, which assesses the conservation status of species. Check out their work at <a href="https://www.iucn.org/">IUCN</a>.
+        </li>
+        <li>
+            <strong>Conservation International</strong> – This organization works with communities, governments, and businesses to promote environmental conservation. Learn more about their initiatives at <a href="https://www.conservation.org/">Conservation International</a>.
+        </li>
+        <li>
+            <strong>The Nature Conservancy</strong> – They focus on conserving lands and waters that are vital to life. You can learn about their global and local efforts at <a href="https://www.nature.org/">The Nature Conservancy</a>.
+        </li>
+        <li>
+            <strong>Wildlife Conservation Society (WCS)</strong> – WCS works to protect wildlife and their habitats globally. They run programs in over 60 countries. Explore more at <a href="https://www.wcs.org/">WCS</a>.
+        </li>
+    </ul>
+
+    <h3>What You Can Do</h3>
+    <p>We're all in this together! Here are some ways you can help:</p>
+    <ul>
+        <li>Join a local conservation group to connect with like-minded individuals.</li>
+        <li>Participate in wildlife monitoring programs to help track species populations.</li>
+        <li>Volunteer for restoration projects in your community to restore natural habitats.</li>
+        <li>Donate to organizations working on species conservation to support their vital efforts.</li>
+        <li>Adopt a species program from organizations like WWF to fund conservation efforts and raise awareness.</li>
+        <li>Reduce your carbon footprint by using energy-efficient appliances, reducing waste, and conserving water.</li>
+        <li>Choose sustainable, eco-friendly products to minimize habitat destruction.</li>
+        <li>Spread the word! Share information about endangered species with friends and family to raise awareness.</li>
+    </ul>
+
+    <h3>Get Inspired</h3>
+    <p>Every small action counts! From adopting sustainable practices at home to supporting eco-friendly businesses, you can contribute to protecting our planet’s biodiversity. Here’s how you can do more:</p>
+    <ul>
+        <li>Support reforestation efforts by planting trees or donating to tree-planting programs like <a href="https://www.one-tree-planted.org/">One Tree Planted</a>.</li>
+        <li>Participate in citizen science projects like <a href="https://www.inaturalist.org/">iNaturalist</a> to help collect data on endangered species.</li>
+        <li>Shop responsibly by avoiding products that contribute to deforestation or the exploitation of endangered species, such as certain types of wood, palm oil, or animal products.</li>
+        <li>Lobby local government officials to prioritize conservation policies and protect natural habitats in your region.</li>
+    </ul>
+
+    <h3>Get Involved Online</h3>
+    <p>There are also many ways to engage with conservation efforts online:</p>
+    <ul>
+        <li>Follow and share content from organizations like WWF, IUCN, and Conservation International on social media to raise awareness.</li>
+        <li>Sign online petitions supporting wildlife protection legislation and initiatives.</li>
+        <li>Take part in virtual events, webinars, and conservation training offered by various environmental organizations.</li>
+    </ul>
+
+    <p>Let's work together for a better future for all living creatures!</p>
+</div>
+
             `;
         }
 
